@@ -1,0 +1,30 @@
+extends ../main.layout.pug
+
+block variables
+  - var title = 'Обо мне'
+
+block scripts
+  script(src='about.bundle.js')
+
+block content
+  
+  section.hero
+    .hero__socials
+      ul.socials__list
+        each social in ['vk', 'github', 'in']
+          li.socials__item
+            a(href="").socials__link
+              +icon(social, 'socials__icon')
+    .hero__menu
+      a(href="").hamburger
+        .hamburger__planks
+    .hero__content
+      .hero__user-desc
+        .user
+          .user__pic-container
+            .user__pic
+              +image('info/me.JPG', 'user pic', 'user__pic-img')
+          .user__info
+            .user__name Анастасия Ковригина
+            .user__desc Личный сайт веб разработчика
+    .hero__arrow-down
