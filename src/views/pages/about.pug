@@ -19,6 +19,7 @@ block content
       a(href="").hamburger
         .hamburger__planks
     .hero__content
+      +image('bg/portfolio_header.png', 'page title', 'title-img')
       .hero__user-desc
         .user
           .user__pic-container
@@ -28,3 +29,75 @@ block content
             .user__name Анастасия Ковригина
             .user__desc Личный сайт веб разработчика
     .hero__arrow-down
+      +icon('arrow_down', 'arrow_down')
+  section.about
+    .about__col.about__col__background-beige
+      //.about__triangle
+        svg(viewbox="0 0 1000 150").triangle.triangle--fill-beige
+          polygon(points="0 0, 1000 150, 0 150")
+      .about__left-title
+        h1.title Обо мне
+        +image('bg/about_header.png', 'page about', 'about-img')
+      .about__user-info
+        .user-info
+          .user-info__avatar
+            img(src="/assets/images/info/me.jpg", alt="").user-info__avatar-pic
+          .user-info__title
+            h2.subtitle Кто я
+          .user-info__text.text-block
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus laudantium quo quae maxime cum? Quo accusamus consequatur nesciunt amet suscipit molestiae aut laboriosam a atque, possimus vero ea fuga dolorum!
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptate. Consectetur dolores ullam autem laborum non quas, maxime esse voluptatem, dicta voluptatum tenetur nam ut ducimus culpa explicabo blanditiis ratione!
+    .about__col.about__col__background-white
+      //.about__triangle
+        svg(viewbox="0 0 1000 150").triangle.triangle--fill-white
+          polygon(points="0 150, 1000 150, 1000 0")
+      .about__right-title
+        h2.subtitle Чем я могу быть Вам полезен
+      .about__desc-text.text-block
+        p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum accusantium labore cum sunt laudantium? Officiis aliquid illum, molestias facilis harum dolorem aspernatur non consectetur cum, architecto maxime cupiditate eos ullam!
+      .about__content
+        ul.skills
+          each item in ['Frontend', 'Backend', 'WorkFlow']
+            li.skills__item.skills-row
+              .skills-row__title #{item}
+              ul.skills-row__list
+                each skill in ['HTML', 'CSS', 'JavaScript & jQuery']
+                  li.skills-row__item
+                    .skill
+                      .skill__circles
+                        svg.skill__circle.skill__circle--under
+                        svg.skill__circle.skill__circle--above
+                      .skill__title #{skill}
+
+  section.map
+    #google-map
+    .map__content
+      .contacts
+        .contacts__title
+          h2.subtitle Контакты
+        ul.contacts__list
+          each contact in ['skype', 'mail', 'tel', 'point']
+            li.contacts__item.contacts-row
+              .contacts-row__icon
+              .contacts-row__title kovrigina_a
+
+  footer.footer
+    .footer__row
+      .footer__col
+        .footer__desc-left Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. 
+      .footer__col
+        .menu
+          ul.menu__list
+            each menuItem in ['Мои работы', 'Обо мне', 'Блог', 'Авторизация']
+              li.menu__item
+                a.menu__link #{menuItem}
+        
+          ul.socials__list
+            each social in ['vk', 'github', 'in']
+              li.socials__item
+                a(href="").socials__link
+                  +icon(social, 'socials__icon')
+      .footer__col
+        .footer__desc-right Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает, где вы живете. — Martin Golding
+
+    
