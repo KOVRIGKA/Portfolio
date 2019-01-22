@@ -28,16 +28,23 @@ block content
           .user__info
             .user__name Анастасия Ковригина
             .user__desc Личный сайт веб разработчика
+    .about__triangle
+      svg(viewbox="0 0 1000 150").triangle.triangle--fill-beige
+        polygon(points="0 0, 1000 150, 0 150")
+      //svg(viewbox="0 0 1000 150").triangle.triangle--fill-white
+          polygon(points="0 150, 1000 150, 1000 0")
+    .about__triangle
+        svg(viewbox="0 0 1000 150").triangle.triangle--fill-white
+          polygon(points="0 150, 1000 150, 1000 0")
     .hero__arrow-down
       +icon('arrow_down', 'arrow_down')
+
+      
   section.about
     .about__col.about__col__background-beige
-      //.about__triangle
-        svg(viewbox="0 0 1000 150").triangle.triangle--fill-beige
-          polygon(points="0 0, 1000 150, 0 150")
-      .about__left-title
-        h1.title Обо мне
-        +image('bg/about_header.png', 'page about', 'about-img')
+      .about__head
+        .about__left-title.section__title
+          h1.title Обо мне
       .about__user-info
         .user-info
           .user-info__avatar
@@ -46,11 +53,9 @@ block content
             h2.subtitle Кто я
           .user-info__text.text-block
             p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus laudantium quo quae maxime cum? Quo accusamus consequatur nesciunt amet suscipit molestiae aut laboriosam a atque, possimus vero ea fuga dolorum!
+            br
             p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptate. Consectetur dolores ullam autem laborum non quas, maxime esse voluptatem, dicta voluptatum tenetur nam ut ducimus culpa explicabo blanditiis ratione!
     .about__col.about__col__background-white
-      //.about__triangle
-        svg(viewbox="0 0 1000 150").triangle.triangle--fill-white
-          polygon(points="0 150, 1000 150, 1000 0")
       .about__right-title
         h2.subtitle Чем я могу быть Вам полезен
       .about__desc-text.text-block
@@ -69,35 +74,30 @@ block content
                         svg.skill__circle.skill__circle--above
                       .skill__title #{skill}
 
-  section.map
-    #google-map
+  section.geolocation
+    #map.map
     .map__content
       .contacts
         .contacts__title
           h2.subtitle Контакты
         ul.contacts__list
-          each contact in ['skype', 'mail', 'tel', 'point']
             li.contacts__item.contacts-row
               .contacts-row__icon
-              .contacts-row__title kovrigina_a
+                +icon(skype, 'contacts__icon')
+              .contacts-row__title live:8e3e0a527043f054
+            li.contacts__item.contacts-row
+              .contacts-row__icon
+                +icon(envelope, 'contacts__icon')
+              .contacts-row__title anastasiia.kovrighina@mail.ru
+            li.contacts__item.contacts-row
+              .contacts-row__icon
+                +icon(phone, 'contacts__icon')
+              .contacts-row__title +7 977 13 43 55
+            li.contacts__item.contacts-row
+              .contacts-row__icon
+                +icon(map_marker, 'contacts__icon')
+              .contacts-row__title г.Москва, ул.Дениса Давыдова, д.9
 
-  footer.footer
-    .footer__row
-      .footer__col
-        .footer__desc-left Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. 
-      .footer__col
-        .menu
-          ul.menu__list
-            each menuItem in ['Мои работы', 'Обо мне', 'Блог', 'Авторизация']
-              li.menu__item
-                a.menu__link #{menuItem}
-        
-          ul.socials__list
-            each social in ['vk', 'github', 'in']
-              li.socials__item
-                a(href="").socials__link
-                  +icon(social, 'socials__icon')
-      .footer__col
-        .footer__desc-right Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает, где вы живете. — Martin Golding
-
-    
+  
+block scripts
+  script(src="https://api-maps.yandex.ru/2.1/?apikey=db1817ab-4f82-4853-a8c7-96a3084f9042&lang=ru_RU" type="text/javascript")   
